@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <title>Sorting Visualiser</title>
+    <link rel="stylesheet" href="styling.css">
+    <script src="logic.js"></script>
+</head>
+
+
+<body>
+    <div class="container">
+        <ul>
+
+            <li class="item">
+                <label for="sort">Sorting algo</label>
+                <select id= "opt">
+                    <option value="bubble">Bubble sort</option>                               <!--writing selected creates a by default selected company in the dropbox in the form-->
+                    <option value="insertion">Insertion sort</option>
+                    <option value="selection">Selection sort</option>
+                    <option value="quick">Quick sort</option>
+                    <option value="merge">Merge sort</option>
+                    <option value="heap">Heap sort</option>
+                </select>
+            </li>
+
+            <li class="item">
+                <label for="speed">Speed</label>
+                <select id= "vel">
+                    <option value="SF">Super fast</option>                               <!--writing selected creates a by default selected company in the dropbox in the form-->
+                    <option value="F">Fast</option>
+                    <option value="M">Medium</option>
+                    <option value="SL">Slow</option>
+                    <option value="SSL">Super Slow</option>
+                </select>
+            </li>
+
+            <button  onclick = "generate_array()">Generate array</button>
+            <button id="start" onclick = "start_sort()">Start sort</button>
+            <button  onclick = "clear_screen()">Clear Screen</button>
+        </ul>
+    </div>
+
+    <script>
+        var c = 1 , rows = 24 , columns = 55 , N = (rows*columns) , speed =8;
+        var pixels = "25px";
+        //rows = 130 , columns = 297 , N = (rows*columns);
+        var i, j , temp , square , str , count =1;
+        var intervalID=0 , timeoutID=0 ,change= 0 ,rand_arr;
+        var  mid = Math.floor((columns-rows)/2)+1;
+        var body = document.body;
+        var chessboard = document.createElement("div");
+        chessboard.style.width = "1485px";
+        chessboard.style.height = "650px";
+        chessboard.style.border = "1px solid black";
+        body.appendChild(chessboard);
+
+        
+        for (i = 1; i <= rows; i++) 
+        {
+            for (j = 1; j <= columns; j++) 
+            {	
+                square = document.createElement("div");
+                str = get_loc(i,j);
+                str = str.toString();
+                square.setAttribute("id",str);
+                square.style.width = "25px";
+                square.style.height = "25px";
+                square.style.float = "left";
+                
+                square.style.background = "white";
+                square.style.border = "1px solid green";
+                chessboard.appendChild(square);
+            }
+        }
+    </script>
+</body>
+</html>
